@@ -7,18 +7,18 @@ import { useState } from 'react'
 
 
 export default function Home() {
-
-  const [location, setLocation] = useState('location')
-  const [minCust, setMinCust] = useState(0)
-  const [maxCust, setMaxCust] = useState(0)
-  const [avgCks, setAvgCks] = useState(0)
+  const [locations, setLocations] = useState([])
 
   function formHandler(e) {
     e.preventDefault();
-    setLocation(e.target.location.value)
-    setMinCust(e.target.mincust.value)
-    setMaxCust(e.target.maxcust.value)
-    setAvgCks(e.target.avgcookies.value)
+    let locObj = {
+      id: locations.length +1,
+      location: e.target.location.value,
+      mincust: e.target.mincust.value,
+      maxcust: e.target.maxcust.value,
+      avgcookies: e.target.avgcookies.value,
+    }
+    setLocations([...locations, locObj])
     e.target.reset()
   }
 
@@ -30,9 +30,9 @@ export default function Home() {
       <Header />
       <main className='mx-16 flex flex-col text-center'>
         <CreateForm onSubmit={formHandler} />
-        <ReportTable />
+        <ReportTable locations={locations}/>
       </main>
-      <Footer count={5}/>
+      <Footer count={locations.length}/>
     </>
   )
 }

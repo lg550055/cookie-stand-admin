@@ -17,7 +17,7 @@ export default function CreateForm(props) {
         </div>
         <div className='inline-block px-2 py-6'>
           <label>Average Cookies per Sale</label><br></br>
-          <input name='avgcookies' type='number' required className='text-black px-2'/>
+          <input name='avgcookies' type='number' placeholder="1.0" step="0.1" min="0" max="10" required className='text-black px-2'/>
         </div>
         <div className='inline-block px-2 py-6'>
           <button type='submit' className='bg-blue-400 px-8 rounded-lg'>Create</button>
