@@ -1,44 +1,33 @@
-import { hours } from "../data"
+import useResource from "../hooks/useResource"
 
+const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
-export default function ReportTable({ locations }) {
+export default function ReportTable() {
 
-  let sales = []
-  let hourly = []
-  locations.forEach( loc => {
-    hourly = hours.map(_ => Math.floor((loc.mincust+loc.maxcust)/2 * loc.avgcookies*Math.random()))
-    let loctotal = Math.floor(hourly.reduce((p,c) => p+c, 0))
-    hourly = [...[loc.location], ...hourly, ...[loctotal]]
-    sales.push(hourly)
-  })
+  const { resources, deleteResource } = useResource()
 
-  let hourlytot = []
-  for (let i=1; i<hourly.length; i++) {
-    let acc = 0
-    sales.forEach( st => {
-      acc += st[i]
-    })
-    hourlytot.push(acc)
+  function clickHandler() {
+    deleteResource(loc.id)
   }
 
-  if (locations.length > 0) {
+  if (resources.length > 0) {
     return (
       <table className="bg-green-500 text-gray-50 mb-6 rounded-lg">
         <thead>
           <tr>
             <th>Location</th>
-            {hours.map(hr => 
-              <th>{hr}</th>
-            )}
+            {hours.map(hr => <th>{hr}</th>)}
             <th>Total</th>
           </tr>
         </thead>
         <tbody>
-            {sales.map(loc =>
+            {resources.map(loc =>
               <tr>
-                {loc.map(item =>
-                  <td>{item}</td>
+                <td>{loc.location} <button onClick={clickHandler}>[x]</button></td>
+                {loc.hourly_sales.map((hr, i) =>
+                  <td key={i}>{hr}</td>
                 )}
+                <td>{loc.hourly_sales.reduce((p,c) => p+c,0)}</td>
               </tr>
             )}
         </tbody>

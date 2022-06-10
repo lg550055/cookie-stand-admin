@@ -1,7 +1,26 @@
+import { useAuth } from '../contexts/auth'
+import useResource from '../hooks/useResource'
 
-export default function CreateForm(props) {
+
+export default function CreateForm() {
+  const { user } = useAuth()
+  const { createResource } = useResource()
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    let locObj = {
+      location: e.target.location.value,
+      mincust: parseInt(e.target.mincust.value),
+      maxcust: parseInt(e.target.maxcust.value),
+      avgcookies: parseFloat(e.target.avgcookies.value),
+      owner: user.id
+    }
+    createResource(locObj)
+    // e.target.reset()
+  }
+
   return (
-    <form onSubmit={props.onSubmit} className='my-6 px-4 bg-green-500 text-gray-50 rounded-lg'>
+    <form onSubmit={handleSubmit} className='my-6 px-4 bg-green-500 text-gray-50 rounded-lg'>
       <fieldset>
         <legend className='text-2xl py-4'>Create Cookie Stand</legend>
         <label>Location</label>
