@@ -1,14 +1,13 @@
 # API Admin
 
-API admin console with CRUD functionaltiy (currently create, read and delete)
+React / Next.js API admin console with CRUD functionaltiy (currently create, read and delete)
 
-Works in tandem with containerized (Docker) Django Rest Framework API.
-API handles authetication and all database interactions.
+Works in tandem with containerized (Docker) Django Rest Framework API.  API handles authetication and all database interactions.
 
 ## Tech stack
 
 #### Front end
-- [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+- [Next.js](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Axios](https://axios-http.com/)
 - [SWR](https://swr.vercel.app/)
