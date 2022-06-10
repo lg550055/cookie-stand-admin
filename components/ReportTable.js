@@ -6,11 +6,7 @@ export default function ReportTable() {
 
   const { resources, deleteResource } = useResource()
 
-  function clickHandler() {
-    deleteResource(loc.id)
-  }
-
-  if (resources.length > 0) {
+  if (resources) {
     return (
       <table className="bg-green-500 text-gray-50 mb-6 rounded-lg">
         <thead>
@@ -22,8 +18,8 @@ export default function ReportTable() {
         </thead>
         <tbody>
             {resources.map(loc =>
-              <tr>
-                <td>{loc.location} <button onClick={clickHandler}>[x]</button></td>
+              <tr key={loc.id}>
+                <td>{loc.location} <button onClick={()=>deleteResource(loc.id)}>[x]</button></td>
                 {loc.hourly_sales.map((hr, i) =>
                   <td key={i}>{hr}</td>
                 )}
@@ -32,11 +28,8 @@ export default function ReportTable() {
             )}
         </tbody>
         <tfoot>
-        <tr>
+          <tr>
             <th>Total</th>
-            {hourlytot.map(tot => 
-                <th>{tot}</th>
-              )}
           </tr>
         </tfoot>
       </table>

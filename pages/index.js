@@ -19,7 +19,7 @@ export default function Home() {
       {user ? 
         <main className='mx-16 flex flex-col text-center'>
           <CreateForm />
-          <ReportTable locations={locations}/>
+          <ReportTable />
         </main>
         : <Login onLogin={login} />
       }

@@ -10,13 +10,13 @@ export default function CreateForm() {
     e.preventDefault();
     let locObj = {
       location: e.target.location.value,
-      mincust: parseInt(e.target.mincust.value),
-      maxcust: parseInt(e.target.maxcust.value),
-      avgcookies: parseFloat(e.target.avgcookies.value),
+      minimum_customers_per_hour: parseInt(e.target.mincust.value),
+      maximum_customers_per_hour: parseInt(e.target.maxcust.value),
+      average_cookies_per_sale: parseFloat(e.target.avgcookies.value),
       owner: user.id
     }
     createResource(locObj)
-    // e.target.reset()
+    e.target.reset()
   }
 
   return (
