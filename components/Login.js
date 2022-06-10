@@ -12,11 +12,11 @@ export default function LoginForm({ onLogin }) {
             {/* <legend className='text-2xl py-4'>Log In</legend> */}
             <label htmlFor="username">USER NAME</label>
             <br></br>
-            <input name="username" placeholder="user name" className='text-black text-center' />
+            <input name="username" placeholder="user name" className='text-blue-500 text-center' />
             <br></br><br></br>
             <label htmlFor="password">PASSWORD</label>
             <br></br>
-            <input type="password" name="password" placeholder="password" className='text-black text-center' />
+            <input type="password" name="password" placeholder="password" className='text-blue-500 text-center' />
             <br></br><br></br>
             <button className="px-8 py-1.5 bg-blue-400 text-gray-50 rounded-lg">Log In</button>
         </fieldset>
