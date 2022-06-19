@@ -34,15 +34,21 @@ export default function useResource() {
         try {
             const url = apiUrl + id;
             await axios.delete(url, config());
-            mutate(); // mutate causes complete collection to be refetched
+            mutate();
         } catch (err) {
             handleError(err);
         }
     }
 
-    async function updateResource(resource) {
-        // STRETCH
-        // Add ability for user to update an existing resource
+    async function updateResource(id, info) {
+        // STRETCH Add ability for user to update an existing resource
+        try {
+            const url = apiUrl + id;
+            await axios.put(url, info, config());
+            mutate();
+        } catch (err) {
+            handleError(err);
+        }
     }
 
     // helper function to handle getting Authorization headers EXACTLY right
